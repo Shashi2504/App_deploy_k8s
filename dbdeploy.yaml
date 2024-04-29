@@ -19,7 +19,7 @@ spec:
           image: vprofile/vprofiledb:V1
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: db-data
+              name: vpro-db-data
           ports:
             - name: vprodb-port
               containerPort: 3306
@@ -32,7 +32,7 @@ spec:
       nodeSelector:
         zone: us-east-1a
       volumes:
-        - name: db-data
+        - name: vpro-db-data
           awsElasticBlockStore:
             volumeID: vol-009188e399d38e9c4
             fsType: ext4
@@ -44,4 +44,4 @@ spec:
           args: ["rm", "-rf", "/var/lib/mysql/lost+found"]
           volumeMounts:
             - mountPath: /var/lib/mysql
-              name: db-data
+              name: vpro-db-data
